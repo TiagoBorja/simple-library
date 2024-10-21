@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="admin dashboard, responsive template" />
+  <meta name="description" content="Admin Dashboard Template" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Login with JWT</title>
+  <!-- Favicon icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png" />
+  <!-- Custom CSS -->
+  <link href="../dist/css/style.min.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="main-wrapper">
+    <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
+      <div class="auth-box bg-dark border-top border-secondary">
+        <div id="loginform">
+          <div class="text-center pt-3 pb-3">
+            <span class="db"><img src="../assets/images/logo.png" alt="logo" /></span>
+          </div>
+          <!-- Form -->
+          <form class="form-horizontal mt-3" id="loginform">
+            <div class="row pb-4">
+              <div class="col-12">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text bg-success text-white h-100" id="basic-addon1">
+                      <i class="mdi mdi-account fs-4"></i>
+                    </span>
+                  </div>
+                  <input type="text" id="username" class="form-control form-control-lg" placeholder="Username"
+                    required="" />
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text bg-warning text-white h-100" id="basic-addon2">
+                      <i class="mdi mdi-lock fs-4"></i>
+                    </span>
+                  </div>
+                  <input type="password" id="password" class="form-control form-control-lg" placeholder="Password"
+                    required="" />
+                </div>
+              </div>
+            </div>
+            <div class="row border-top border-secondary">
+              <div class="col-12">
+                <div class="form-group">
+                  <div class="pt-3">
+                    <button class="btn btn-info" id="to-recover" type="button">
+                      <i class="mdi mdi-lock fs-4 me-1"></i> Lost password?
+                    </button>
+                    <button class="btn btn-success float-end text-white" id="loginBtn" type="button">
+                      Login
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div id="recoverform">
+          <div class="text-center">
+            <span class="text-white">Enter your e-mail address below and we will send you instructions how to recover a
+              password.</span>
+          </div>
+          <div class="row mt-3">
+            <!-- Form -->
+            <form class="col-12" action="index.html">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text bg-danger text-white h-100" id="basic-addon1">
+                    <i class="mdi mdi-email fs-4"></i>
+                  </span>
+                </div>
+                <input type="text" class="form-control form-control-lg" placeholder="Email Address"
+                  aria-label="Email" />
+              </div>
+              <div class="row mt-3 pt-3 border-top border-secondary">
+                <div class="col-12">
+                  <a class="btn btn-success text-white" href="#" id="to-login">Back To Login</a>
+                  <button class="btn btn-info float-end" type="button">Recover</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- All Required js -->
+  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Login Script -->
+  <script>
+    document.getElementById('loginBtn').addEventListener('click', async function () {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        const response = await fetch('http://localhost:8080/auth/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, password }),
+        });
+
+        if (!response.ok) {
+          return alert('Login failed!');
+        }
+
+        const data = await response.json();
+        const token = data.token;
+
+        // Armazena o token no localStorage
+        localStorage.setItem('jwtToken', token);
+
+        alert('Login successful!');
+        window.location.href = 'index.html';
+
+      } catch (error) {
+        console.error('Error during login:', error);
+        alert('An error occurred during login.');
+      }
+    });
+
+    // Função para lidar com o formulário de recuperação de senha
+    $('#to-recover').on('click', function () {
+      $('#loginform').slideUp();
+      $('#recoverform').fadeIn();
+    });
+
+    $('#to-login').click(function () {
+      $('#recoverform').hide();
+      $('#loginform').fadeIn();
+    });
+
+    // Remove o preloader quando a página for carregada
+    $('.preloader').fadeOut();
+  </script>
+</body>
+
+</html>
