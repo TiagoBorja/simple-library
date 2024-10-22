@@ -155,7 +155,7 @@
                 <i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="livros.html" aria-expanded="false">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="book.html" aria-expanded="false">
                 <i class="mdi mdi-book"></i><span class="hide-menu">Livros</span></a>
             </li>
             <li class="sidebar-item">
@@ -250,6 +250,14 @@
   <script src="../assets/libs/flot/jquery.flot.crosshair.js"></script>
   <script src="../assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
   <script src="../dist/js/pages/chart/chart-page-init.js"></script>
+
+
+  <script>
+    const token = localStorage.getItem('jwtToken');
+    if (!token) {
+      window.location.href = 'authentication-login.html';
+    }
+  </script>
 </body>
 
 </html>

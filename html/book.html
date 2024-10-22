@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="emprestafacil, sistema de empréstimo, biblioteca, gerenciamento de livros" />
+    <meta name="description"
+        content="EmprestaFacil é um sistema de gerenciamento de empréstimos de livros para bibliotecas" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>EmprestaFacil</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png" />
+    <link href="../assets/libs/flot/css/float-chart.css" rel="stylesheet" />
+    <link href="../dist/css/style.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../assets/extra-libs/multicheck/multicheck.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+        <header class="topbar" data-navbarbg="skin5">
+            <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+                <div class="navbar-header" data-logobg="skin5">
+                    <a class="navbar-brand" href="index.html">
+                        <b class="logo-icon ps-2">
+                            <img src="../assets/images/logo-icon.png" alt="homepage" class="light-logo" width="25" />
+                        </b>
+                        <span class="logo-text ms-2">
+                            <img src="../assets/images/logo-text.png" alt="homepage" class="light-logo" />
+                        </span>
+                    </a>
+                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
+                            class="ti-menu ti-close"></i></a>
+                </div>
+                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+                    <ul class="navbar-nav float-start me-auto">
+                        <li class="nav-item d-none d-lg-block">
+                            <a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)"
+                                data-sidebartype="mini-sidebar"><i class="mdi mdi-menu font-24"></i></a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav float-end">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#"
+                                id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="../assets/images/users/1.jpg" alt="user" class="rounded-circle" width="31" />
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end user-dd animated"
+                                aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="javascript:void(0)"><i
+                                        class="mdi mdi-account me-1 ms-1"></i> Meu Perfil</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="javascript:void(0)"><i
+                                        class="mdi mdi-settings me-1 ms-1"></i> Configurações da Conta</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="javascript:void(0)"><i
+                                        class="fa fa-power-off me-1 ms-1"></i> Sair</a>
+                                <div class="dropdown-divider"></div>
+                                <div class="ps-4 p-10">
+                                    <a href="javascript:void(0)"
+                                        class="btn btn-sm btn-success btn-rounded text-white">Ver Perfil</a>
+                                </div>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <aside class="left-sidebar" data-sidebarbg="skin5">
+            <div class="scroll-sidebar">
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav" class="pt-4">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html"
+                                aria-expanded="false">
+                                <i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="book.html"
+                                aria-expanded="false">
+                                <i class="mdi mdi-book"></i><span class="hide-menu">Livros</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                aria-expanded="false">
+                                <i class="mdi mdi-account-key"></i><span class="hide-menu">Autenticação</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse first-level">
+                                <li class="sidebar-item">
+                                    <a href="authentication-login.html" class="sidebar-link">
+                                        <i class="mdi mdi-all-inclusive"></i><span class="hide-menu">Login</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="authentication-register.html" class="sidebar-link">
+                                        <i class="mdi mdi-all-inclusive"></i><span class="hide-menu">Registro</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)"
+                                aria-expanded="false">
+                                <i class="mdi mdi-alert"></i><span class="hide-menu">Erros</span>
+                            </a>
+                            <ul aria-expanded="false" class="collapse first-level">
+                                <li class="sidebar-item">
+                                    <a href="error-404.html" class="sidebar-link">
+                                        <i class="mdi mdi-alert-octagon"></i><span class="hide-menu">Erro 404</span>
+                                    </a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="error-500.html" class="sidebar-link">
+                                        <i class="mdi mdi-alert-octagon"></i><span class="hide-menu">Erro 500</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <div class="page-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title mb-0">Livros</h5>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="tabela-livro" class="table">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th></th>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Título</th>
+                                            <th scope="col">ISBN</th>
+                                            <th scope="col">Ano de Publicação</th>
+                                            <th scope="col">Autor</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <td>
+                                            <input type="radio" class="form-check-input" id="customControlValidation1"
+                                                name="radio-stacked" />
+                                        </td>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="text-center mt-3">
+                            <button id="novoLivro" class="btn btn-outline-success" type="button"
+                                data-id="novo">Novo</button>
+                            <button id="editarLivro" class="btn btn-outline-info" type="button"
+                                data-id="editar">Editar</button>
+                            <button id="informacoesLivro" class="btn btn-outline-secondary" type="button"
+                                data-id="informacoes">Informações</button>
+                            <button id="excluirLivro" class="btn btn-outline-danger" type="button"
+                                data-id="excluir">Excluir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer text-center">
+                Todos os direitos reservados por EmprestaFacil. Desenvolvido por
+                <a href="#">Sua Empresa</a>.
+            </footer>
+        </div>
+    </div>
+
+    <script src="../js/book.js"></script>
+    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="../assets/extra-libs/sparkline/sparkline.js"></script>
+    <script src="../dist/js/waves.js"></script>
+    <script src="../dist/js/sidebarmenu.js"></script>
+    <script src="../dist/js/custom.min.js"></script>
+    <script src="../assets/libs/flot/excanvas.js"></script>
+    <script src="../assets/libs/flot/jquery.flot.js"></script>
+    <script src="../assets/libs/flot/jquery.flot.pie.js"></script>
+    <script src="../assets/libs/flot/jquery.flot.time.js"></script>
+    <script src="../assets/libs/flot/jquery.flot.stack.js"></script>
+    <script src="../assets/libs/flot/jquery.flot.crosshair.js"></script>
+    <script src="../assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+    <script src="../dist/js/pages/chart/chart-page-init.js"></script>
+</body>
+
+</html>
